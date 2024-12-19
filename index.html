@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #1f1f1f;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #555;
+            background-color: #1f1f1f;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+
+        /* Movie Cards */
+        .movie-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .movie-card {
+            background-color: #333;
+            border-radius: 8px;
+            width: 200px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card-title {
+            padding: 10px;
+            text-align: center;
+            background-color: #222;
+        }
+
+        /* Smooth Transitions */
+        .transition {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .grid-snap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .grid-item {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Series</a>
+            <a href="#">Genres</a>
+            <a href="#">Top 10</a>
+            <a href="#">Watchlist</a>
+            <a href="#">Contact</a>
+            <a href="#">About</a>
+            <a href="#">Help</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-bar" id="search-bar" placeholder="Search Movies and Series...">
+            </div>
+
+            <!-- Movie Cards -->
+            <div class="movie-cards grid-snap">
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
+                    <div class="movie-card-title">Movie Title 1</div>
+                </div>
+
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
+                    <div class="movie-card-title">Movie Title 2</div>
+                </div>
+
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
+                    <div class="movie-card-title">Movie Title 3</div>
+                </div>
+
+                <!-- More Cards Here -->
+                <div class="movie-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
+                    <div class="movie-card-title">Movie Title 4</div>
+                </div>
+
+                <!-- Add more movie cards as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth search bar effect
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', function () {
+            const query = searchBar.value.toLowerCase();
+            const movieCards = document.querySelectorAll('.movie-card');
+            movieCards.forEach(card => {
+                const title = card.querySelector('.movie-card-title').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Redirect to individual movie page
+        const movieCards = document.querySelectorAll('.movie-card');
+        movieCards.forEach(card => {
+            card.addEventListener('click', function () {
+                window.location.href = 'movie.html'; // You can dynamically pass movie data here
+            });
+        });
+    </script>
+</body>
+
+</html>
