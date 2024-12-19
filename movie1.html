@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Title</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .movie-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .movie-details {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .movie-poster {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .movie-title {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        .movie-description {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00d4ff;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #0088cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="movie-container">
+        <div class="movie-details">
+            <img src="https://via.placeholder.com/300x450" alt="Movie Poster" class="movie-poster">
+            <div class="movie-title">Movie Title</div>
+            <div class="movie-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac leo nunc. Fusce in erat urna. Nam a
+                ipsum leo.
+            </div>
+            <button class="back-button" onclick="window.history.back()">Back to Movies</button>
+        </div>
+    </div>
+</body>
+
+</html>
