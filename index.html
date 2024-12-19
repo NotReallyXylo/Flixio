@@ -155,23 +155,23 @@
 
             <!-- Movie Cards -->
             <div class="movie-cards grid-snap">
-                <div class="movie-card">
+                <div class="movie-card" onclick="window.location.href='movie1.html';">
                     <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
                     <div class="movie-card-title">Movie Title 1</div>
                 </div>
 
-                <div class="movie-card">
+                <div class="movie-card" onclick="window.location.href='movie2.html';">
                     <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
                     <div class="movie-card-title">Movie Title 2</div>
                 </div>
 
-                <div class="movie-card">
+                <div class="movie-card" onclick="window.location.href='movie3.html';">
                     <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
                     <div class="movie-card-title">Movie Title 3</div>
                 </div>
 
                 <!-- More Cards Here -->
-                <div class="movie-card">
+                <div class="movie-card" onclick="window.location.href='movie4.html';">
                     <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
                     <div class="movie-card-title">Movie Title 4</div>
                 </div>
@@ -194,14 +194,6 @@
                 } else {
                     card.style.display = 'none';
                 }
-            });
-        });
-
-        // Redirect to individual movie page
-        const movieCards = document.querySelectorAll('.movie-card');
-        movieCards.forEach(card => {
-            card.addEventListener('click', function () {
-                window.location.href = 'movie1.html'; // You can dynamically pass movie data here
             });
         });
     </script>
