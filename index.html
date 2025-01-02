@@ -1,202 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movie Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Product Finder</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            background-color: #121212;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .container {
-            display: flex;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #1f1f1f;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-y: auto;
+            min-height: 100vh;
         }
 
-        .sidebar a {
+        header {
+            background-color: #333;
             color: #fff;
-            text-decoration: none;
-            padding: 12px;
-            margin: 10px 0;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            padding: 10px 20px;
+            text-align: center;
         }
 
-        .sidebar a:hover {
-            background-color: #444;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            width: 100%;
-        }
-
-        /* Search Bar */
-        .search-container {
+        main {
             display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
         }
 
         .search-bar {
-            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
             padding: 10px;
-            border-radius: 20px;
-            border: 1px solid #555;
-            background-color: #1f1f1f;
-            color: #fff;
             font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        .search-bar:focus {
-            outline: none;
-            border-color: #00d4ff;
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        /* Movie Cards */
-        .movie-cards {
+        .filters select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            justify-items: center;
         }
 
-        .movie-card {
-            background-color: #333;
-            border-radius: 8px;
-            width: 200px;
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
             overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            background-color: #fff;
+            text-align: center;
         }
 
-        .movie-card img {
+        .product img {
             width: 100%;
             height: auto;
         }
 
-        .movie-card:hover {
-            transform: scale(1.05);
-        }
-
-        .movie-card-title {
-            padding: 10px;
-            text-align: center;
-            background-color: #222;
-        }
-
-        /* Smooth Transitions */
-        .transition {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .grid-snap {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .grid-item {
+        .product h4, .product p {
             margin: 10px;
+        }
+
+        .product a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .ad-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Series</a>
-            <a href="#">Genres</a>
-            <a href="#">Top 10</a>
-            <a href="#">Watchlist</a>
-            <a href="#">Contact</a>
-            <a href="#">About</a>
-            <a href="#">Help</a>
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" class="search-bar" id="search-bar" placeholder="Search Movies and Series...">
+    <header>
+        <h1>Product Finder</h1>
+    </header>
+    <main>
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Fashion</a></li>
+                <li><a href="#">Home & Garden</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Toys</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products...">
             </div>
-
-            <!-- Movie Cards -->
-            <div class="movie-cards grid-snap">
-                <div class="movie-card" onclick="window.location.href='movie1.html';">
-                    <img src="https://image.tmdb.org/t/p/w500/aosm8NMQ3UyoBVpSxyimorCQykC.jpg" alt="Movie Poster">
-                    <div class="movie-card-title">Venom: The Last Dance</div>
-                </div>
-
-                <div class="movie-card" onclick="window.location.href='movie2.html';">
-                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
-                    <div class="movie-card-title">Movie Title 2</div>
-                </div>
-
-                <div class="movie-card" onclick="window.location.href='movie3.html';">
-                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
-                    <div class="movie-card-title">Movie Title 3</div>
-                </div>
-
-                <!-- More Cards Here -->
-                <div class="movie-card" onclick="window.location.href='movie4.html';">
-                    <img src="https://via.placeholder.com/200x300" alt="Movie Poster">
-                    <div class="movie-card-title">Movie Title 4</div>
-                </div>
-
-                <!-- Add more movie cards as needed -->
+            <div class="filters">
+                <select>
+                    <option value="">Price</option>
+                    <option value="low-to-high">Low to High</option>
+                    <option value="high-to-low">High to Low</option>
+                </select>
+                <select>
+                    <option value="">Category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home-garden">Home & Garden</option>
+                </select>
+                <select>
+                    <option value="">Color</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
             </div>
-        </div>
-    </div>
-
+            <div class="product-grid" id="product-grid">
+                <!-- Example Product -->
+                <div class="product">
+                    <a href="https://example.com" target="_blank">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h4>Sample Product</h4>
+                        <p>$20.00</p>
+                    </a>
+                </div>
+            </div>
+            <div class="ad-section">
+                <p>Advertisement Space</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at: contact@example.com</p>
+    </footer>
     <script>
-        // Smooth search bar effect
-        const searchBar = document.getElementById('search-bar');
-        searchBar.addEventListener('input', function () {
-            const query = searchBar.value.toLowerCase();
-            const movieCards = document.querySelectorAll('.movie-card');
-            movieCards.forEach(card => {
-                const title = card.querySelector('.movie-card-title').textContent.toLowerCase();
-                if (title.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        // Infinity scrolling example
+        const productGrid = document.getElementById('product-grid');
+
+        const loadMoreProducts = () => {
+            for (let i = 0; i < 10; i++) {
+                const product = document.createElement('div');
+                product.classList.add('product');
+                product.innerHTML = `
+                    <a href="https://example.com" target="_blank">
+                        <img src="https://via.placeholder.com/200" alt="Product Image">
+                        <h4>Product ${Math.floor(Math.random() * 100)}</h4>
+                        <p>$${(Math.random() * 100).toFixed(2)}</p>
+                    </a>
+                `;
+                productGrid.appendChild(product);
+            }
+        };
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+                loadMoreProducts();
+            }
         });
+
+        loadMoreProducts(); // Initial load
     </script>
 </body>
-
 </html>
